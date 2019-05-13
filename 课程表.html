@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <title>我的课程表</title>
+    <style>
+        table,
+        th,
+        td{
+            border: 1px solid purple;
+            border-collapse: collapse;
+            width: 800px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        p{font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif}
+        table{width:100%;background-image:url(测试.gif) fixed repeat center;}
+        td{width:80px;height:auto;cursor:default;}
+        .ys {
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow:hidden;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            background-color:#3c102d4d;
+            width: 75%;
+            height:30%;
+        }
+        #mouse{cursor: pointer;}
+        #title {
+            color: red;
+            font-size: 30px;
+            text-align: center
+        }
+        th:hover{
+        position:relative;left:auto;top:auto;z-index: 5px;
+        box-shadow: gray 8px 8px 10px 5px inset;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="title">我的第一个课程表</p>
+    <table class="ys">
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td>周一</td>
+            <td>周二</td>
+            <td>周三</td>
+            <td>周四</td>
+            <td>周五</td>
+            <td>周六</td>
+            <td>周日</td>
+        </tr>
+        <tr id="mouse">
+            <td  rowspan="4">上午</td>
+            <td>1</td>
+            <th rowspan="2">web应用 一公教C411</th>
+            <th rowspan="2">大学英语四级 一公教C221</th>
+            <th rowspan="2">管理信息系统 一公教C105</th>
+            <th rowspan="2">运营管理 一公教B405</th>
+            <th rowspan="2">大学英语四级 西区外语楼219</th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+        </tr>
+        <tr>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <th rowspan="2">毛泽东思想与中国特色社会主义理论体系 一公教A120</th>
+            <th rowspan="2">管理科学基础 一公教C411</th>
+            <th rowspan="2">毛泽东思想与中国特色社会主义理论体系 一公教A120</th>
+            <th rowspan="2">管理科学基础 一公教C411</th>
+            <th rowspan="2">运营管理 一公教B405</th>
+            <th rowspan="2">数学建模入门 一公教A403</th>
+            <th rowspan="2"> </th>
+        </tr>
+        <tr>
+            <td>4</td>
+        </tr>
+        <tr id="mouse">
+            <td  rowspan="4">下午</td>
+            <td>5</td>
+            <th rowspan="2">管理信息系统 一公教C105</th>
+            <th rowspan="2">形势与政策2 一公教C123</th>
+            <th rowspan="2">会计学 一公教B101</th>
+            <th rowspan="2">体育</th>
+            <th rowspan="2">毛泽东思想与中国特色社会主义理论体系 一公教A120</th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+        </tr>
+        <tr>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <th rowspan="2">电子商务 一公教B303</th>
+            <th rowspan="2">数据库原理及应用 一公教C109</th>
+            <th rowspan="2"> </th>
+            <th rowspan="2">会计学 一公教B101</th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+        <tr> 
+            <td  rowspan="2">晚上</td>
+            <td>9</td>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+            <th rowspan="2"> </th>
+        </tr>
+        <tr>
+            <td>10</td>
+        </tr>
+    </table>
+    <p>以下是特点：</p>
+    <p>1.整个框架完善</p>
+    <p>2.无关重要的的信息框较小</p>
+    <p>3.重要的框的信息相对定位且有向内阴影</p>
+    <p>4.课程信息里单数行鼠标为手，双数为为箭头</p>
+    <p>5.课程信息边框圆角化</p>
+    <p>适当合并行，使大课，小课，上午，下午，晚上分离开来</p>
+    <p>整个位置居中，且是响应式式设计</p>
+
+</body>
+
+</html>
