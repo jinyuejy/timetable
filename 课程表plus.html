@@ -1,0 +1,181 @@
+<html>
+
+<head>
+  <title>我的课程表</title>
+  <style>
+    td {
+      height: 3em;
+      width: 3em;
+      text-align: center;
+      background-color: #3c102d4d;
+    }
+
+    td.obj:hover {
+      position: relative;
+      left: auto;
+      top: auto;
+      z-index: 5px;
+      cursor: pointer;
+      box-shadow: gray 8px 8px 10px 5px inset;
+    }
+
+    .cell {
+      height: 3em;
+      width: 6em;
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: hidden;
+     font-family: Georgia, '华文行楷', Times, sans-serif;
+    }
+
+    .cell>.detail {
+      display: none;
+    }
+
+    .cell>.detail.open {
+      display: block;
+      position: absolute;
+      height: 8em;
+      width: 8em;
+      background-color: rgb(223, 20, 196);
+      font-family: Georgia, '微软雅黑', Times, serif;
+    }
+
+    .ys {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      color: blueviolet;
+    }
+    p{
+      text-align: center;
+      font-family: Georgia, '楷体', Times, serif;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    div.hang {
+      width:6em;
+      height: 3em;
+      background-color: rgb(233, 168, 88);
+    }
+
+    div.lie {
+      width:3em;
+      height:3em;
+      background-color: #f11caa4d;
+    }
+    td.disapper{
+      background-color:gray;
+    }
+    div.pat{
+      height: 3em;
+      width: 6em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>我的课程表</h1>
+  <p id="djz"></p>
+  <table id="grid" class="ys">
+  </table>
+  <script>
+    let week= new Array( "星期日","星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
+    let d = new Date();
+    //console.log(d.getDay());
+    function zhou(date){
+    let final;
+    let dd=new Date();
+    let m=dd.getTime();
+    let dd1=new Date(date);
+    let n=dd1.getTime();
+    let cha=(m-n)/1000/60/60/24/7;
+    final=Math.floor(cha);
+    return final;
+}
+let initdate=zhou("2019-2-8")
+    document.getElementById("djz").innerHTML="这周是第"+(initdate)+"周";
+    let timetable = new Array(" ", "周一", "周二", "周三", "周四", "周五", "周六", "周日"
+      , "一", "web应用开发技术", "大学英语四级（A）", "管理信息系统", "数据库原理及应用", "大学英语英语四级（A）", " ", " "
+      , "二", "毛泽东思想与中国特色社会主义理论", "管理科学基础", "毛泽东思想与中国特色社会主义理论", "管理科学基础", "运营管理", "数学建模", " "
+      , "三", "管理信息系统", "形势与政策", "会计学", "体育", "毛泽东思想与中国特色社会主义理论", " ", " "
+      , "四", "电子商务", "数据库原理及应用", " ", "会计学", " ", " ", " "
+      , "五", " ", " ", " ", " ", " ", " ", " ");
+    let dtime = new Array(" ", "周一", "周二", "周三", "周四", "周五", "周六", "周日"
+      , "一", "web应用开发技术@第一公共教学楼C411,第1~15周，老师：吕成功", "大学英语四级（A）@第一公共教学楼C221，第1~17周，老师：张蔚", "管理信息系统@第一公共教学楼C105，第1~15周，老师：刘烨，单周", "数据库原理及应用@第一公共教学楼B405，第2~14周，老师：吴君", "大学英语英语四级（A）@第一公共教学楼C219，第2~16周，老师：张蔚", "无课", "无课"
+      , "二", "毛泽东思想与中国特色社会主义理论@第一公共教学楼A120，第1~16周，老师：顾洪英", "管理科学基础@第一公共教学楼C411，第3~17周，老师：赵方方", "毛泽东思想与中国特色社会主义理论@第一公共教学楼A120第1~16周，老师：顾洪英", "管理科学基础@第一公共教学楼C411，第3~17周，老师：赵方方", "运营管理@第一公共教学楼B405，第1~15周，老师：刘亮*邓华", "数学建模@第一公共教学楼B220，第2~16周，老师：王小超", "无课"
+      , "三", "管理信息系统@第一公共教学楼C105，第1~15周，老师：刘烨，单周", "形势与政策@第一公共教学楼C123，第5~7周，老师：李坤", "会计学@第一公共教学楼B101，第1~17周，老师：刘晓晖，单周", "体育@体育馆", "毛泽东思想与中国特色社会主义理论@第一公共教学楼A120第1~16周，老师：顾洪英", "无课", "无课"
+      , "四", "电子商务@第一公共教学楼B303，第3~17周，老师：张亮", "数据库原理及应用@第一公共教学楼C109，第2~14周，老师：吴君", "无课", "会计学@第一公共教学楼B101，第1~17周，老师：刘晓晖", "无课", "无课", "无课"
+      , "五", "无课", "无课", "无课", "无课", "无课", "无课", "无课");
+      let con=new Array(0,0,0,0,0,0,0,0,0,1,0,0,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+    let tblEl = document.getElementById('grid');
+    for (let i = 0; i < 6; i++) {
+      let trEl = document.createElement('tr');
+      for (let j = 0; j < 8; j++) {
+        let tdEl = document.createElement('td');
+        let divEl = document.createElement('div')
+        divEl.className = 'cell';
+
+        let detailDivEl = document.createElement('div');
+        
+        if(i==0&&j==0)
+        {
+          detailDivEl.innerHTML="今天："+week[d.getDay()];
+        }
+        if (i != 0 && ((8 * i + j) % 8) != 0)
+          {
+            detailDivEl.className = 'detail';
+          detailDivEl.innerHTML = dtime[8 * i + j];
+          }
+
+        detailDivEl.onmouseout = function (event) {
+          let names = detailDivEl.className.split(' ');
+          names = names.filter((x) => x != 'open')
+          detailDivEl.className = names.join(' ');
+        }
+        divEl.append(detailDivEl);
+          let briefDivEl = document.createElement('div');
+        briefDivEl.innerHTML = timetable[8 * i + j];
+        divEl.append(briefDivEl);
+        tdEl.onclick = function (event) {
+          let names = detailDivEl.className.split(' ');
+
+          if (names.indexOf('open') >= 0) {
+            names = names.filter((x) => x != 'open')
+          } else {
+            names.push('open');
+          }
+          detailDivEl.className = names.join(' ');
+
+
+        };
+
+        let classNames = [];
+        if (i != 0 && (8 * i + j) % 8 != 0)
+          classNames.push('obj');
+          tdEl.className = classNames.join(' ');
+        if (i == 0)
+          classNames.push('hang');
+        if ((8 * i + j) % 8 == 0)
+          classNames.push('lie');
+        classNames.push('cell');
+        divEl.className=classNames.join(' ');
+        if(initdate%2==con[8*i+j]%2&&con[8*i+j]!=0)
+       {
+        
+        tdEl.className='disapper';
+       }
+        tdEl.append(divEl);
+        trEl.append(tdEl);
+      }
+      tblEl.append(trEl);
+    }
+  </script>
+</body>
+
+</html>
